@@ -24,12 +24,14 @@ class GildedRoseTests: XCTestCase {
         let items = [Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 3, quality: 5),
                      Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 3, quality: 0),
                      Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 0, quality: 3),
-                     Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 0, quality: 2)]
+                     Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 0, quality: 2),
+                     Item(name: itemTypes.ConjuredItem.rawValue, sellIn: 5, quality: 56)]
         let app = GildedRose(items: items)
         app.updateQuality()
         XCTAssertEqual(app.items[0].quality, 3)
         XCTAssertEqual(app.items[1].quality, 0)
         XCTAssertEqual(app.items[2].quality, 0)
+        XCTAssertEqual(app.items[3].quality, 50)
     }
     
     func testSulfuras() {

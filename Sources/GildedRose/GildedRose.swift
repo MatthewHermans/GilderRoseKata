@@ -18,7 +18,6 @@ public class GildedRose {
                 item.sellIn -= 1
             }
             
-            guard item.quality < 50 else { continue }
             let degradeRate = calculateDegradeRateBasedOn(item: item)
             updateItemQuality(item: item, adjustment: degradeRate)
             
@@ -32,6 +31,9 @@ public class GildedRose {
         let newQuality = item.quality + adjustment
         
         if newQuality > 50 {
+            guard item.name != itemTypes.sulfuras.rawValue else {
+                return
+            }
             item.quality = 50
         } else if newQuality < 0 {
             item.quality = 0
